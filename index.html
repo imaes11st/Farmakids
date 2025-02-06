@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Farmakids - Regencia de Farmacia</title>
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* Estilos Generales */
+    body {
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #E3F2FD;
+      color: #0D47A1;
+      text-align: center;
+      scroll-behavior: smooth; /* Desplazamiento suave en anclas */
+    }
+    header {
+      background-color: #0D47A1;
+      color: white;
+      padding: 10px 20px; /* Menos padding para un header más compacto */
+      text-align: center;
+    }
+    .logo img {
+      width: 180px; /* Logo un poco más grande */
+    }
+    /* Se ha quitado el título para que el header quede más limpio */
+    
+    /* Navbar */
+    nav {
+      background-color: #0D47A1;
+      padding: 10px 0;
+    }
+    nav ul {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      list-style: none;
+    }
+    nav ul li {
+      margin: 0 20px;
+    }
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+      font-size: 1.1em;
+      transition: color 0.3s;
+    }
+    nav ul li a:hover {
+      color: #E3F2FD;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Carrusel */
+    .carousel {
+      position: relative;
+      max-width: 80%;
+      margin: 20px auto;
+      /* Usamos aspect-ratio para mantener la relación de aspecto 16:9 */
+      aspect-ratio: 16 / 9;
+      overflow: hidden;
+      border-radius: 10px;
+    }
+    .carousel-images {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+      height: 100%;
+    }
+    .carousel-images img {
+      min-width: 100%;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+    }
+    .carousel-btn.prev {
+      left: 10px;
+    }
+    .carousel-btn.next {
+      right: 10px;
+    }
+    
+    /* Secciones */
+    section {
+      padding: 40px 0;
+    }
+    section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #0D47A1;
+    }
+    .services ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    .services ul li {
+      margin: 10px 0;
+      font-size: 1.2em;
+      text-align: left;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .about p {
+      max-width: 800px;
+      margin: 0 auto;
+      font-size: 1.1em;
+      line-height: 1.6;
+      text-align: justify;
+    }
+    
+    /* Redes Sociales */
+    .social a {
+      margin: 10px;
+      font-size: 40px;
+      color: #000;
+    }
+    
+    /* Pie de Página */
+    footer {
+      background-color: #0D47A1;
+      color: white;
+      padding: 20px 0;
+    }
+    footer p {
+      margin: 5px 0;
+    }
+    
+    /* Sección de Ubicación (Mapa) */
+    .map-section {
+      padding: 40px 0;
+      background-color: #f7f7f7;
+    }
+    .map-section h2 {
+      font-size: 2em;
+      margin-bottom: 20px;
+      color: #0D47A1;
+    }
+    .map-container {
+      width: 80%;
+      max-width: 800px;
+      margin: 0 auto;
+      border: 5px solid #0D47A1;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .map-container iframe {
+      width: 100%;
+      height: 450px;
+      border: 0;
+    }
+    
+    /* Botón de "Volver al Inicio" */
+    #scrollToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background-color: #0D47A1;
+      color: white;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s, visibility 0.3s;
+      z-index: 100;
+    }
+    #scrollToTop:hover {
+      background-color: #E3F2FD;
+      color: #0D47A1;
+    }
+    #scrollToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+</head>
+<body id="top">
+  <header>
+    <div class="logo">
+      <img src="assets/logo.png" alt="Farmakids Logo">
+    </div>
+    <!-- Título eliminado para un header más compacto -->
+  </header>
+  
+  <!-- Navbar con "Inicio" -->
+  <nav>
+    <ul>
+      <li><a href="#top">Inicio</a></li>
+      <li><a href="#services">Servicios</a></li>
+      <li><a href="#about">Quiénes Somos</a></li>
+      <li><a href="#contact">Contacto</a></li>
+    </ul>
+  </nav>
+  
+  <div class="container">
+    <!-- Carrusel de imágenes -->
+    <div class="carousel">
+      <button class="carousel-btn prev" onclick="prevSlide()">&#10094;</button>
+      <div class="carousel-images" id="carousel-images">
+        <!-- Las imágenes se cargarán aquí -->
+      </div>
+      <button class="carousel-btn next" onclick="nextSlide()">&#10095;</button>
+    </div>
+
+    <!-- Sección de Servicios -->
+    <section class="services" id="services">
+      <h2>Nuestros Servicios</h2>
+      <ul>
+        <li>🕒 Atención 24 horas especializada en salud infantil.</li>
+        <li>👩‍⚕️ Consultas pediátricas con regentes de farmacia expertos en medicamentos para niños.</li>
+        <li>💉 Servicios de inyectología adaptados a las necesidades pediátricas.</li>
+        <li>❤️ Toma de signos vitales y seguimiento personalizado en el cuidado de la salud infantil.</li>
+        <li>🩸 Glucometría y control de condiciones crónicas en niños.</li>
+        <li>🔍 Asesoramiento en el uso seguro de medicamentos y prevención de efectos adversos.</li>
+      </ul>
+    </section>
+
+    <!-- Sección Acerca de Nosotros -->
+    <section class="about" id="about">
+      <h2>¿Quiénes Somos?</h2>
+      <p>
+        En Farmakids nos dedicamos exclusivamente al cuidado de la salud infantil. Nuestro regente de farmacia, especializado en medicamentos para niños, lidera un equipo de profesionales comprometidos con la seguridad y el bienestar de los pequeños. Contamos con amplios conocimientos en dosificación pediátrica, interacción medicamentosa y el uso adecuado de productos farmacéuticos para la infancia.
+      </p>
+      <p>
+        Además, en Farmakids ofrecemos un ambiente cálido y amigable, donde padres y niños se sienten cómodos y bien atendidos. Nuestro compromiso es garantizar la calidad, eficacia y seguridad en cada tratamiento, promoviendo la prevención y el cuidado integral de la salud infantil.
+      </p>
+    </section>
+
+    <!-- Sección de Contacto -->
+    <section class="contact" id="contact">
+      <h2>Contacto</h2>
+      <p>📞 Teléfono: +57 300 123 4567</p>
+      <p>📍 Ubicación: Dirección de la Droguería</p>
+      <div class="social">
+        <a href="#"><i class="fab fa-tiktok"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-facebook"></i></a>
+      </div>
+    </section>
+    
+    <!-- Sección de Ubicación (Mapa) -->
+    <section class="map-section" id="location">
+      <h2>Encuentra Nuestra Ubicación</h2>
+      <div class="map-container">
+        <!-- Reemplaza el enlace de Google Maps con la ubicación real de tu farmacia -->
+        <iframe 
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.834121582262!2d-73.98883938459314!3d40.75889527932759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855f7a993db%3A0x8e8a2b2e4b5a3f0!2sTimes%20Square!5e0!3m2!1ses!2sus!4v1615151981234!5m2!1ses!2sus" 
+          allowfullscreen="" 
+          loading="lazy">
+        </iframe>
+      </div>
+    </section>
+  </div>
+
+  <!-- Pie de Página -->
+  <footer>
+    <p>Atendido por personal de enfermería, farmacia y médico especialista.</p>
+    <p>&copy; 2024 Farmakids. Todos los derechos reservados.</p>
+  </footer>
+  
+  <!-- Botón de "Volver al Inicio" -->
+  <div id="scrollToTop" onclick="scrollToTop()">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+  
+  <script>
+    let index = 0;
+    const images = [
+      'assets/imagen1.jpg',
+      'assets/imagen2.jpg',
+      'assets/imagen3.jpg'
+    ];
+
+    // Función para cargar las imágenes en el contenedor y ajustar el ancho
+    function loadImages() {
+      const carouselImages = document.getElementById('carousel-images');
+      carouselImages.innerHTML = ''; // Limpiar el contenedor
+      images.forEach((src, i) => {
+        const img = document.createElement('img');
+        img.src = src;
+        img.alt = `Imagen ${i + 1} relacionada con Farmakids`;
+        carouselImages.appendChild(img);
+      });
+      // Ajustamos el ancho del contenedor: (número de imágenes * 100%)
+      carouselImages.style.width = `${images.length * 33.5}%`;
+    }
+
+    // Muestra la imagen correspondiente usando translateX
+    function showSlide(i) {
+      const slides = document.querySelectorAll('.carousel-images img');
+      if (i >= slides.length) index = 0;
+      if (i < 0) index = slides.length - 1;
+      document.getElementById('carousel-images').style.transform = `translateX(${-index * 100}%)`;
+    }
+
+    function nextSlide() {
+      index++;
+      if (index >= images.length) index = 0;
+      showSlide(index);
+    }
+
+    function prevSlide() {
+      index--;
+      if (index < 0) index = images.length - 1;
+      showSlide(index);
+    }
+
+    // Función para volver al inicio
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Mostrar/ocultar botón de "Volver al Inicio"
+    window.addEventListener('scroll', () => {
+      const scrollToTopBtn = document.getElementById('scrollToTop');
+      if (window.pageYOffset > 300) {
+        scrollToTopBtn.classList.add('show');
+      } else {
+        scrollToTopBtn.classList.remove('show');
+      }
+    });
+
+    window.onload = function() {
+      loadImages();
+      showSlide(index);
+      setInterval(() => {
+        nextSlide();
+      }, 5000);
+    };
+  </script>
+</body>
+</html>
