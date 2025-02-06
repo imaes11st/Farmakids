@@ -121,10 +121,34 @@
     }
     .about p {
       max-width: 800px;
-      margin: 0 auto;
+      margin: 0 auto 20px auto;
       font-size: 1.1em;
       line-height: 1.6;
       text-align: justify;
+    }
+    /* Row para Misión, Visión y Valores */
+    .row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin-top: 20px;
+    }
+    .column {
+      flex: 1;
+      max-width: 350px;
+      margin: 10px;
+      text-align: left;
+    }
+    .column h3 {
+      color: #0D47A1;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+      border-bottom: 2px solid #0D47A1;
+      padding-bottom: 5px;
+    }
+    .column p {
+      font-size: 1em;
+      line-height: 1.6;
     }
     
     /* Redes Sociales */
@@ -240,22 +264,54 @@
       </ul>
     </section>
 
-    <!-- Sección Acerca de Nosotros -->
+    <!-- Sección Acerca de Nosotros con Información Adicional -->
     <section class="about" id="about">
       <h2>¿Quiénes Somos?</h2>
       <p>
         En Farmakids nos dedicamos exclusivamente al cuidado de la salud infantil. Nuestro regente de farmacia, especializado en medicamentos para niños, lidera un equipo de profesionales comprometidos con la seguridad y el bienestar de los pequeños. Contamos con amplios conocimientos en dosificación pediátrica, interacción medicamentosa y el uso adecuado de productos farmacéuticos para la infancia.
       </p>
-      <p>
-        Además, en Farmakids ofrecemos un ambiente cálido y amigable, donde padres y niños se sienten cómodos y bien atendidos. Nuestro compromiso es garantizar la calidad, eficacia y seguridad en cada tratamiento, promoviendo la prevención y el cuidado integral de la salud infantil.
-      </p>
+      <!-- Nuevo Row con Misión, Visión y Valores Corporativos -->
+      <div class="row">
+        <div class="column">
+          <h3>MISIÓN</h3>
+          <p>
+            Somos un establecimiento farmacéutico especializado en medicamentos y productos cosméticos y dermatológicos, a través de las cuales buscamos satisfacer la necesidad del cliente; por medio de la venta de productos que garanticen la satisfacción de nuestros clientes, contribuyendo así al mejoramiento de la calidad de vida de nuestros usuarios.
+          </p>
+        </div>
+        <div class="column">
+          <h3>VISIÓN</h3>
+          <p>
+            Ser en el 2025 una empresa posicionada en la ciudad de Manizales principalmente, marcando la diferencia por la atención y calidad de nuestros productos, innovando cada día, convirtiéndonos en la opción que nuestros clientes prefieran para su mejoramiento de la salud.
+          </p>
+        </div>
+      </div>
+      <div class="" style="text-align: center;">
+        <h3>VALORES CORPORATIVOS</h3>
+        <p>
+          <strong>HONESTIDAD:</strong> Actuar con la verdad, honradez y total transparencia. Buscar, aceptar y decir la verdad, respetando los derechos y bienes de las personas.<br><br>
+          <strong>RESPONSABILIDAD:</strong> Todos nuestros actos serán realizados de acuerdo con una noción de justicia y del cumplimiento del deber en todos los sentidos. La responsabilidad es una obligación moral e incluso legal de cumplir con lo que se ha comprometido.<br><br>
+          <strong>COMPROMISO:</strong> Empleamos nuestras capacidades haciendo el mejor esfuerzo para cumplir con todo aquello que se nos ha delegado y maximizamos nuestro desempeño para cumplir con el logro de los objetivos de la empresa.<br><br>
+          <strong>CALIDAD:</strong> Ofrecer productos avalados por el INVIMA para garantizar así la calidad de nuestros productos.<br><br>
+          <strong>LIDERAZGO:</strong> Tener la habilidad de saber transmitir los propios pensamientos a los demás, tener la capacidad de comprender a las personas y conjuntar equipos de trabajo eficientes. Tener amplia visión, certeza y oportunidad en sus aportaciones, gran capacidad de trabajo y firmes decisiones.<br><br>
+          <strong>RESPETO:</strong> Tenemos una relación con nuestros empleados, clientes, proveedores, y en general con la comunidad; justa, equitativa, ecuánime, y de beneficio mutuo.<br><br>
+          <strong>COMUNICACION:</strong> El respeto, la veracidad y la transparencia serán las características de nuestro diálogo con las personas, con tolerancia y comprensión, soportando contratiempos y adversidades con fortaleza; moderando la conducta para actuar de manera acorde a la situación.
+        </p>
+      </div>      
     </section>
 
     <!-- Sección de Contacto -->
     <section class="contact" id="contact">
       <h2>Contacto</h2>
-      <p>📞 Teléfono: +57 300 123 4567</p>
-      <p>📍 Ubicación: Dirección de la Droguería</p>
+      <p>
+        <strong>
+            📞 Teléfono: +57 300 123 4567
+        </strong>
+    </p>
+      <p>
+        <strong>
+            📍 Ubicación: Manizales, Caldas CO
+        </strong>
+    </p>
       <div class="social">
         <a href="#"><i class="fab fa-tiktok"></i></a>
         <a href="#"><i class="fab fa-instagram"></i></a>
@@ -268,14 +324,14 @@
       <h2>Encuentra Nuestra Ubicación</h2>
       <div class="map-container">
         <!-- Reemplaza el enlace de Google Maps con la ubicación real de tu farmacia -->
-        <iframe 
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3021.834121582262!2d-73.98883938459314!3d40.75889527932759!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855f7a993db%3A0x8e8a2b2e4b5a3f0!2sTimes%20Square!5e0!3m2!1ses!2sus!4v1615151981234!5m2!1ses!2sus" 
-          allowfullscreen="" 
-          loading="lazy">
-        </iframe>
-      </div>
+        <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3976.123456789012!2d-75.51739568424082!3d5.068889395625162!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8e3a2a3456c0abf5%3A0x76895e9876543210!2sCarrera%2024%20%26%20Calle%2061%2C%20Manizales%2C%20Caldas%2C%20Colombia!5e0!3m2!1ses!2sus!4v1615151981234!5m2!1ses!2sus"
+        allowfullscreen=""
+        loading="lazy">
+       </iframe>
+    </div>
     </section>
-  </div>
+    <hr>
 
   <!-- Pie de Página -->
   <footer>
